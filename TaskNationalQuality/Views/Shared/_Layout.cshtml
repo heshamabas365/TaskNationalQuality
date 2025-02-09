@@ -1,0 +1,124 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TaskNationalQuality.Models
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{int ? userId =  Context.Session.GetInt32("UserId"); }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TaskNationalQuality</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <partial name="_ValidationScriptsPartial" />
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #343a40;
+        padding: 10px 20px;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: inline;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        transition: background-color 0.3s;
+        border-radius: 5px;
+    }
+
+    nav ul li a:hover {
+        background-color: #007bff;
+    }
+
+    .navbar-brand {
+        font-size: 24px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .container {
+        padding: 40px 20px;
+    }
+
+    footer {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+
+  
+        }
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="navbar-brand">
+                TaskNationalQuality
+            </div>
+            <div class="nav-links">
+                <ul>
+
+                    @if (userId != null)
+                    {
+                        <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
+                     
+                            <li><a asp-area="" asp-controller="Products" asp-action="Create">Create Product</a></li>
+                        <li><a asp-area="" asp-controller="Invoice" asp-action="SelectProducts">Create Invoice</a></li>
+                        
+                        <li><a asp-area="" asp-controller="Account" asp-action="login">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                    }
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TaskNationalQuality. All rights reserved.</p>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

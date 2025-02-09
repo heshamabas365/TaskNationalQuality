@@ -1,0 +1,44 @@
+﻿@model TaskNationalQuality.ViewModels.Product.ProductCreateViewModel
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<div class="container mt-5">
+    <!-- Page Title -->
+    <h2 class="text-center mb-4">Create Product</h2>
+
+    <!-- Create Product Form -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4>Create a New Product</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <!-- Product Name Field -->
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Product Price Field -->
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" type="number" step="0.01" required />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <!-- Save Button -->
+                    <button type="submit" class="btn btn-success">Save</button>
+
+                    <!-- Back to List Button -->
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

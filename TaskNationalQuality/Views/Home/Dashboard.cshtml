@@ -1,0 +1,66 @@
+﻿@model List<TaskNationalQuality.Models.Product>
+
+@{
+    ViewData["Title"] = "Your Products";
+    User user = (User)ViewBag.userinfo;
+}
+
+<div class="container mt-5">
+    <!-- Welcome Section -->
+    <h2 class="text-center">Welcome, @ViewBag.UserName</h2>
+
+    <!-- User Information Card -->
+    <div class="card mb-4 shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4>User Information</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Username:</strong> @user.Username</p>
+            <p><strong>Code:</strong> @user.Code</p>
+            <p><strong>Customer Name:</strong> @user.CustomerName</p>
+            <p><strong>Joined Date:</strong> @user.Date.ToString("dd-MM-yyyy")</p>
+        </div>
+    </div>
+
+    <!-- Product List Section -->
+    <h3>Your Products</h3>
+
+    <!-- Display message if there are no products -->
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            @ViewBag.Message
+        </div>
+    }
+
+    <!-- Products Table -->
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Products", new { id = product.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Products", new { id = product.Id })" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Add New Product Button -->
+    <div class="mt-4">
+        <a href="@Url.Action("Create", "Products")" class="btn btn-success btn-lg">Add New Product</a>
+    </div>
+</div>
+
+

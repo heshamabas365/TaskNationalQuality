@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "devextreme": "^23.1.0", // Update to the latest version compatible with your setup
+    "@devexpress/analytics-core": "^23.1.0", // Same for analytics-core, check for the latest version
+    "devexpress-reporting": "^23.1.0", // Update this as well
+    "globalize": "^1.7.0", // No change, should work fine
+    "jquery-ui-dist": "^1.13.2" // Latest version of jQuery UI
+  }
+}

@@ -1,0 +1,39 @@
+﻿@model TaskNationalQuality.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container mt-5">
+    <!-- Page Title -->
+    <h2 class="text-center mb-4">Product Details</h2>
+
+    <!-- Card for Product Details -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4>Product Information</h4>
+        </div>
+        <div class="card-body">
+            <!-- Product Details -->
+            <div class="mb-4">
+                <h5>Details</h5>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-3">Name:</dt>
+                    <dd class="col-sm-9">@Model.Name</dd>
+
+                    <dt class="col-sm-3">Price:</dt>
+                    <dd class="col-sm-9">@Model.Price</dd>
+                </dl>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-between">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-lg">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary btn-lg">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
